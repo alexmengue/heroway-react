@@ -8,13 +8,13 @@ import useEnemyMoviment from '../../hooks/UseEnemyMoviment';
 
 const Demon2 = () => {
 
-    const moviment = useEnemyMoviment({x: 5, y: 5});
+    const moviment = useEnemyMoviment({x: 10, y: 10});
 
     return (
         <div
             style={{
                 position: 'absolute',
-                bottom: TILE_SIZE * moviment.position.y,
+                top: TILE_SIZE * moviment.position.y,
                 left: TILE_SIZE * moviment.position.x,
                 width:DEMON_TILE_SIZE,
                 height: DEMON_TILE_SIZE,

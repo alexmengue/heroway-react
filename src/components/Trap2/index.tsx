@@ -9,10 +9,10 @@ const Trap2 = () => {
         <div
             style={{
                 position: 'absolute',
-                bottom: TILE_SIZE * 12,
+                top: TILE_SIZE * 12,
                 left: TILE_SIZE * 7,
                 width:TILE_SIZE,
-                height: TILE_SIZE,
+                height: 100,
                 backgroundImage: "url(./assets/TRAP.png)",
                 backgroundRepeat: 'no-repeat',
                 animation: 'trap2-animation 1s steps(8) infinite',
