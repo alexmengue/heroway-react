@@ -15,6 +15,7 @@ function App() {
         height: GAME_SIZE,
        }}
        >
+         
           <Debugger/>
           <Board/>
       </div>
