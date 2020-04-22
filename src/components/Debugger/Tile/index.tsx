@@ -3,13 +3,16 @@ import { TILE_SIZE } from '../../../settings/constants';
 import { ECanvas } from '../../../contexts/canvas/helper';
 
 interface IProps {
+  
   position: { x: number, y: number };
   text: number;
+
 }
 
 function Tile(props: IProps) {
 
   function getTileColor() {
+    
     switch(props.text) {
       case ECanvas.FLOOR:
         return 'darkgrey';

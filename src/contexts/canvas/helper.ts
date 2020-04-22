@@ -2,7 +2,9 @@ import { EDirection, EWalker } from "../../settings/constants";
 import React from "react";
 
 export function handleNextPosition(direction, position) {
+
   switch(direction) {
+
     case EDirection.LEFT:
       return { x: position.x - 1, y: position.y };
 
@@ -14,10 +16,12 @@ export function handleNextPosition(direction, position) {
 
     case EDirection.UP:
       return { x: position.x, y: position.y - 1 };
+
   }
 }
 
 export enum ECanvas {
+
   FLOOR = 0,
   WALL = 1,
   DOOR = 2,
@@ -26,6 +30,7 @@ export enum ECanvas {
   DEMON = 5,
   CHEST = 6,
   HERO = 7
+
 };
 
 const FL = ECanvas.FLOOR;
@@ -43,14 +48,14 @@ export const canvas = [
   [WL, FL, FL, WL, FL, FL, FL, FL, WL, FL, FL, FL, FL, FL, FL, FL, WL, FL, FL, WL],
   [WL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, WL],
   [WL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, WL],
-  [WL, FL, TR, FL, FL, FL, FL, CH, FL, FL, FL, FL, FL, FL, FL, MD, FL, FL, FL, WL],
+  [WL, FL, TR, CH, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, MD, FL, FL, FL, WL],
   [WL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, WL],
   [WL, FL, FL, FL, FL, FL, FL, FL, TR, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, WL],
   [WL, FL, FL, FL, FL, FL, MD, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, WL],
   [WL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, WL],
   [WL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, WL],
   [WL, FL, FL, FL, FL, FL, FL, FL, FL, DE, FL, FL, FL, FL, FL, FL, FL, FL, FL, WL],
-  [WL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, WL],
+  [WL, FL, FL, FL, FL, CH, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, WL],
   [WL, FL, FL, FL, MD, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, WL],
   [WL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, CH, FL, FL, FL, WL],
   [WL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, WL],
@@ -61,26 +66,32 @@ export const canvas = [
 ];
 
 export function checkValidMoviment(nextPosition, walker) {
+
   const canvasValue = canvas[nextPosition.y][nextPosition.x];
 
   const result = walker === EWalker.HERO ? getHeroValidMoves(canvasValue) : getEnemyValidMoves(canvasValue); 
   return result;
+
 }
 
 function getHeroValidMoves(canvasValue) {
+
   return {
     valid: canvasValue === ECanvas.FLOOR || canvasValue === ECanvas.CHEST || canvasValue === ECanvas.TRAP || canvasValue === ECanvas.MINI_DEMON || canvasValue === ECanvas.DEMON,
     dead: canvasValue === ECanvas.TRAP || canvasValue === ECanvas.MINI_DEMON || canvasValue === ECanvas.DEMON,
     chest: canvasValue === ECanvas.CHEST,
     door: canvasValue === ECanvas.DOOR,
   }
+
 }
 
 function getEnemyValidMoves(canvasValue) {
+
   return {
     valid: canvasValue === ECanvas.FLOOR || canvasValue === ECanvas.HERO,
-    dead: false,
+    dead: canvasValue === ECanvas.HERO,
     chest: false,
     door: false,
   }
+  
 }

@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
-
 import { GAME_SIZE } from '../settings/constants';
 import Game from './Game';
 
 function App() {
+
   return (
     <div className="App">
       <div
@@ -18,6 +18,7 @@ function App() {
       </div>
     </div>
   );
+  
 }
 
 export default App;

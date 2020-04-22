@@ -1,7 +1,9 @@
 import React from 'react';
 
 interface IProps {
+
   children: React.ReactNode;
+  
 }
 
 export const ChestsContext = React.createContext({
@@ -10,18 +12,28 @@ export const ChestsContext = React.createContext({
     total: 0,
     positions: []
   },
-  updateOpenedChests: () => null
+  updateOpenedChests: (position) => null
 });
 
 function ChestsProvider(props: IProps) {
+  
   const [chestsState, updateChestsState] = React.useState({
-    totalChests: 2,
+    totalChests: 3,
     openedChests: {
       total: 0,
       positions: []
     },
-    updateOpenedChests: () => {
-      console.log('chests');
+    updateOpenedChests: (position) => {
+      updateChestsState((prevState) => {
+        return {
+          totalChests: prevState.totalChests,
+            openedChests: {
+              total: prevState.openedChests.total + 1,
+              positions: prevState.openedChests.positions.concat(position),
+            },
+            updateOpenedChests: prevState.updateOpenedChests,
+        };
+      })
     }
   });
 

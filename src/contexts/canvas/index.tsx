@@ -2,7 +2,9 @@ import React from "react";
 import { canvas, handleNextPosition, checkValidMoviment, ECanvas } from "./helper";
 
 interface IProps {
+
   children: React.ReactNode;
+
 }
 
 export const CanvasContext = React.createContext({
@@ -11,6 +13,7 @@ export const CanvasContext = React.createContext({
 });
 
 function CanvasProvider(props: IProps) {
+
   const [canvasState, updateCanvasState] = React.useState({
     canvas: canvas,
     updateCanvas: (direction, currentPosition, walker) => {
@@ -30,6 +33,7 @@ function CanvasProvider(props: IProps) {
             updateCanvas: prevState.updateCanvas,
           }
         });
+        
       }
 
 

@@ -4,12 +4,15 @@ import CanvasProvider, { CanvasContext } from '../../contexts/canvas';
 
 
 function getCanvasMap(canvas) {
+
   const tileArray = [];
 
   for (let y = 0; y < canvas.length; y++) {
+
   const canvasY = canvas[y];
 
     for (let x = 0; x < canvasY.length; x++) {
+
       const canvasYX = canvasY[x];
 
       const position = { x: x, y: y };
@@ -24,6 +27,7 @@ function getCanvasMap(canvas) {
 }
 
 function Debugger() {
+  
   const canvasContext = React.useContext(CanvasContext);
   const tiles = getCanvasMap(canvasContext.canvas);
 

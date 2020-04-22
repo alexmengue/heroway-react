@@ -1,20 +1,16 @@
 import React from 'react';
-
 import { TILE_SIZE, HEAD_OFFSET, EDirection } from '../../settings/constants';
-
 import './index.css';
 import useHeroMoviment from '../../hooks/UseHeroMoviment';
 
-// const moviment = {
-//   position: { x: 5, y: 5 },
-//   direction: EDirection.RIGHT,
-// };
-
 interface IProps {
+
   initialPosition: { x: number; y: number }
+
 }
 
 const Hero = (props: IProps) => {
+  
   const { position, direction } = useHeroMoviment(props.initialPosition);
 
   return (
